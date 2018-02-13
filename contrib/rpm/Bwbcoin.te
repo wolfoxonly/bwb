@@ -1,0 +1,81 @@
+policy_module(Bwbcoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type Bwbcoin_t;
+type Bwbcoin_exec_t;
+init_daemon_domain(Bwbcoin_t, Bwbcoin_exec_t)
+
+permissive Bwbcoin_t;
+
+type Bwbcoin_initrc_exec_t;
+init_script_file(Bwbcoin_initrc_exec_t)
+
+type Bwbcoin_conf_t;
+files_type(Bwbcoin_conf_t)
+
+type Bwbcoin_var_lib_t;
+files_type(Bwbcoin_var_lib_t)
+
+type Bwbcoin_var_run_t;
+files_type(Bwbcoin_var_run_t)
+
+type Bwbcoin_port_t;
+corenet_port(Bwbcoin_port_t)
+
+########################################
+#
+# Bwbcoin local policy
+#
+allow Bwbcoin_t self:process { fork };
+
+allow Bwbcoin_t self:fifo_file rw_fifo_file_perms;
+allow Bwbcoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(Bwbcoin_t, Bwbcoin_conf_t, Bwbcoin_conf_t)
+manage_files_pattern(Bwbcoin_t, Bwbcoin_conf_t, Bwbcoin_conf_t)
+
+manage_dirs_pattern(Bwbcoin_t, Bwbcoin_var_lib_t, Bwbcoin_var_lib_t)
+manage_files_pattern(Bwbcoin_t, Bwbcoin_var_lib_t, Bwbcoin_var_lib_t)
+files_var_lib_filetrans(Bwbcoin_t, Bwbcoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(Bwbcoin_t, Bwbcoin_var_run_t, Bwbcoin_var_run_t)
+manage_files_pattern(Bwbcoin_t, Bwbcoin_var_run_t, Bwbcoin_var_run_t)
+
+sysnet_dns_name_resolve(Bwbcoin_t)
+corenet_all_recvfrom_unlabeled(Bwbcoin_t)
+
+allow Bwbcoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(Bwbcoin_t)
+corenet_tcp_sendrecv_generic_node(Bwbcoin_t)
+corenet_tcp_sendrecv_all_ports(Bwbcoin_t)
+corenet_tcp_bind_generic_node(Bwbcoin_t)
+
+gen_require(`
+    type Bwbcoin_port_t;
+')
+allow Bwbcoin_t Bwbcoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type Bwbcoin_port_t;
+')
+allow Bwbcoin_t Bwbcoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(Bwbcoin_t)
+
+files_read_etc_files(Bwbcoin_t)
+
+miscfiles_read_localization(Bwbcoin_t)
+
+sysnet_dns_name_resolve(Bwbcoin_t)
+
+allow Bwbcoin_t Bwbcoin_exec_t:file execute_no_trans;
+allow Bwbcoin_t self:process setsched;
+corecmd_exec_ls(Bwbcoin_t)
+corenet_tcp_connect_http_port(Bwbcoin_t)
+dev_read_urand(Bwbcoin_t)
+fs_getattr_xattr_fs(Bwbcoin_t)
+kernel_read_system_state(Bwbcoin_t)

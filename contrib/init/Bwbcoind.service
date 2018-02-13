@@ -1,0 +1,25 @@
+# It is not recommended to modify this file in-place, because it will
+# be overwritten during package upgrades. If you want to add further
+# options or overwrite existing ones then use
+# $ systemctl edit Bwbcoind.service
+# See "man systemd.service" for details.
+
+# Note that almost all daemon options could be specified in
+# /etc/Bwbcoin/Bwbcoin.conf
+
+[Unit]
+Description=Bwbcoin daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/Bwbcoind -daemon -conf=/etc/Bwbcoin/Bwbcoin.conf -pid=/run/Bwbcoind/Bwbcoind.pid
+# Creates /run/Bwbcoind owned by Bwbcoin
+RuntimeDirectory=Bwbcoind
+User=Bwbcoin
+Type=forking
+PIDFile=/run/Bwbcoind/Bwbcoind.pid
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

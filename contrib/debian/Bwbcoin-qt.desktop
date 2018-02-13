@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Bwbcoin Core
+Comment=Connect to the Bwbcoin P2P Network
+Comment[de]=Verbinde mit dem Bwbcoin peer-to-peer Netzwerk
+Comment[fr]=Bwbcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Bwbcoin, eşten eşe kriptografik sanal para birimi
+Exec=Bwbcoin-qt %u
+Terminal=false
+Type=Application
+Icon=Bwbcoin128
+MimeType=x-scheme-handler/Bwbcoin;
+Categories=Office;Finance;
+StartupWMClass=Bwbcoin-qt

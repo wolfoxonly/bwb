@@ -1,0 +1,6 @@
+usr/local/bin/Bwbcoin-qt usr/bin
+share/pixmaps/Bwbcoin32.xpm usr/share/pixmaps
+share/pixmaps/Bwbcoin16.xpm usr/share/pixmaps
+share/pixmaps/Bwbcoin128.png usr/share/pixmaps
+debian/Bwbcoin-qt.desktop usr/share/applications
+debian/Bwbcoin-qt.protocol usr/share/kde4/services/
