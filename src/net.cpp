@@ -433,9 +433,14 @@ CNode* FindNode(const CService& addr)
 
 CNode* ConnectNode(CAddress addrConnect, const char *pszDest)
 {
+    printf("trying connection %s before judgement",
+        pszDest ? pszDest : addrConnect.ToString().c_str());//zxb,ljn校验节点
     if (pszDest == NULL) {
         if (IsLocal(addrConnect))
+        	{
+			printf("IsLocal(addrConnect) judge fail");//zxb,ljn
             return NULL;
+        	}
 
         // Look for an existing connection
         CNode* pnode = FindNode((CService)addrConnect);
@@ -1232,7 +1237,9 @@ void ThreadDNSAddressSeed()
                     int nOneDay = 24*3600;
                     CAddress addr = CAddress(CService(ip, GetDefaultPort()));
                     addr.nTime = GetTime() - 3*nOneDay - GetRand(4*nOneDay); // use a random age between 3 and 7 days old
-                    vAdd.push_back(addr);
+                     printf("vAdd.push_back:");
+                     printf("%s\n", addr.ToString().c_str());
+					vAdd.push_back(addr);
                     found++;
                 }
             }

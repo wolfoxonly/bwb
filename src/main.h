@@ -2437,6 +2437,9 @@ public:
     virtual bool BatchWrite(const std::map<uint256, CCoins> &mapCoins, CBlockIndex *pindex);
 
     // Calculate statistics about the unspent transaction output set
+    virtual bool GetUtxos(const std::string & address, std::map<COutPoint, CCoins> & coinset);
+
+    // Calculate statistics about the unspent transaction output set
     virtual bool GetStats(CCoinsStats &stats);
 
     // As we use CCoinsViews polymorphically, have a virtual destructor
