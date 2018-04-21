@@ -535,7 +535,7 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex)
 bool CheckStakeModifierCheckpoints(int nHeight, unsigned int nStakeModifierChecksum)
 {
     if (fTestNet) return true; // Testnet has no checkpoints
-    printf("nStakeModifierChecksum==%d CheckStakeModifierCheckpoints() mapStakeModifierCheckpoints.count(nHeight) === %d\n",nStakeModifierChecksum, mapStakeModifierCheckpoints.count(nHeight));
+  //  printf("nStakeModifierChecksum==%d CheckStakeModifierCheckpoints() mapStakeModifierCheckpoints.count(nHeight) === %d\n",nStakeModifierChecksum, mapStakeModifierCheckpoints.count(nHeight));//zxb ³ýµôÎÞ¹Ø´òÓ¡
     if (mapStakeModifierCheckpoints.count(nHeight))
         return nStakeModifierChecksum == mapStakeModifierCheckpoints[nHeight];
     return true;

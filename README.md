@@ -1,7 +1,7 @@
 
 Bwbcoin Official Development Repo
 ==================================
-
+v1.0
 
 
 

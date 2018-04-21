@@ -197,6 +197,38 @@ Value getblock(const Array& params, bool fHelp)
     return blockToJSON(block, pblockindex, fTxinfo);
 }
 
+Value getutxos(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 1)
+        throw runtime_error(
+            "getutxos(address)\n"
+            "Returns the unspent transaction output set.");
+
+    Array ret;
+    std::string strAddress = params[0].get_str();
+
+    std::map<COutPoint, CCoins> maps;
+    if (pcoinsTip->GetUtxos(strAddress, maps)) {
+        for(std::map<COutPoint, CCoins>::iterator it = maps.begin(); it != maps.end(); ++it){
+            COutPoint key = it->first;
+            CCoins val = it->second;
+            CTxOut coin = val.vout[key.n];
+            Object entry;
+            entry.push_back(Pair("txid", key.hash.ToString()));
+            entry.push_back(Pair("n", (int)key.n));
+            entry.push_back(Pair("height", (int)val.nHeight));
+            entry.push_back(Pair("coinbase", val.fCoinBase));
+            entry.push_back(Pair("coinstake", val.fCoinStake));
+            entry.push_back(Pair("coinbase", (int)val.nTime));
+            entry.push_back(Pair("coinbase", (int)val.nVersion));
+            entry.push_back(Pair("amount", ValueFromAmount(coin.nValue)));
+            entry.push_back(Pair("scriptPubKey", (coin.scriptPubKey.ToString())));
+            ret.push_back(entry);
+        }
+    }
+    return ret;
+}
+
 Value gettxoutsetinfo(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 0)

@@ -319,7 +319,8 @@ return 1;
 #endif
     return ret;
 }
-*///去掉logo
+*///delete logo
+
 string vstrprintf(const char *format, va_list ap)
 {
     char buffer[50000];
