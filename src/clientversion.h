@@ -24,9 +24,9 @@
 #endif //HAVE_CONFIG_H
 
 // ppcoin version - intended for display purpose ONLY
-#define BWBCOIN_VERSION_MAJOR       0
-#define BWBCOIN_VERSION_MINOR       6
-#define BWBCOIN_VERSION_REVISION    2
+#define BWBCOIN_VERSION_MAJOR       2
+#define BWBCOIN_VERSION_MINOR       0
+#define BWBCOIN_VERSION_REVISION    0
 #define BWBCOIN_VERSION_BUILD       0
 
 // Copyright year (2009-this)
