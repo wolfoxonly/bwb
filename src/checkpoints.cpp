@@ -38,7 +38,7 @@ namespace Checkpoints
     // + Contains no strange transactions
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-        ( 0, hashGenesisBlockOfficial )//<ZXB>
+        ( 0, hashGenesisBlockOfficial )//<coingo.vip>
          ( 100, uint256("0x0000000df2482cc52c60e4d84a7ca276aeb9a4c217c3f9c9cc52afb624188901"))
          ( 500, uint256("0x0000001067fdc5ee1da2fe2234c17a0dc37082f04521e30631a07221f6a57daa"))
          ( 2000, uint256("0x000000013231970d74261c286d84c918268b6efdf4a5b2913af941c8398ed74e"))

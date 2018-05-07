@@ -34,7 +34,7 @@ QString BwbcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("BWB");//zxb定义名字
+    case BTC: return QString("BWB");//coingo.vip定义名字
     case mBTC: return QString("mBWB");
     case uBTC: return QString::fromUtf8("μBWB");
     default: return QString("???");
