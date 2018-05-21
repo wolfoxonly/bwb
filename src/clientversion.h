@@ -9,7 +9,7 @@
 //
 
 // These need to be macros, as version.cpp's and Bwbcoin-qt.rc's voodoo requires it
-#define CLIENT_VERSION_MAJOR       2
+#define CLIENT_VERSION_MAJOR       3
 #define CLIENT_VERSION_MINOR       0
 #define CLIENT_VERSION_REVISION    1
 #define CLIENT_VERSION_BUILD       1
@@ -24,7 +24,7 @@
 #endif //HAVE_CONFIG_H
 
 // ppcoin version - intended for display purpose ONLY
-#define BWBCOIN_VERSION_MAJOR       2
+#define BWBCOIN_VERSION_MAJOR       3
 #define BWBCOIN_VERSION_MINOR       0
 #define BWBCOIN_VERSION_REVISION    1
 #define BWBCOIN_VERSION_BUILD       1
